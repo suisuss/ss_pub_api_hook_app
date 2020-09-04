@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import '../../models/message.dart';
-import '../../app.dart';
+import 'package:ss_pub_api_hook_app/app.dart';
+import 'package:ss_pub_api_hook_app/models/message.dart';
 
 class MessagesList extends StatefulWidget {
-  final String title;
-
-  const MessagesList({Key key, this.title}) : super(key: key);
+  const MessagesList({Key key}) : super(key: key);
 
   State<StatefulWidget> createState() => _MessagesListState();
 }
 
 class _MessagesListState extends State<MessagesList> {
-  Future<List<Message>> posts;
+  Future<List<Message>> messages;
 
   void initState() {
     super.initState();
-    posts = Message.fetchMessages();
+    messages = Message.fetchMessages();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: FutureBuilder(
-      future: posts,
+      future: messages,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:

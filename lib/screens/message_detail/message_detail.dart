@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ss_pub_api_hook_app/models/message.dart';
-import 'text_section.dart';
+import 'package:ss_pub_api_hook_app/screens/message_detail/text_section.dart';
 
 class MessageDetail extends StatefulWidget {
   final int messageID;
@@ -21,7 +21,7 @@ class _MessageDetailState extends State<MessageDetail> {
   }
 
   void fetch() async {
-    future = Message.fetchPostByID(widget.messageID);
+    future = Message.fetchMessageByID(widget.messageID);
     message = await future;
   }
 

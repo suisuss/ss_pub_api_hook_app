@@ -36,12 +36,12 @@ class Message {
     await Future.delayed(Duration(milliseconds: 500));
 
     List collection = json.decode(response.body)['messages'];
-    List<Message> _posts =
+    List<Message> _messages =
         collection.map((json) => Message.fromJSON(json)).toList();
-    return _posts;
+    return _messages;
   }
 
-  static Future<Message> fetchPostByID(int messageID) async {
+  static Future<Message> fetchMessageByID(int messageID) async {
     final response =
         await http.get('http://10.0.2.2:5000/api/message/$messageID');
 
@@ -49,8 +49,8 @@ class Message {
 
     var collection = json.decode(response.body);
 
-    Message _post = Message.fromJSON(collection);
+    Message _message = Message.fromJSON(collection);
 
-    return _post;
+    return _message;
   }
 }
